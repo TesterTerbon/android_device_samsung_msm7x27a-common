@@ -118,13 +118,10 @@ TARGET_PROVIDES_LIBLIGHTS := true
 TARGET_PROVIDES_LIBAUDIO := true
 
 ## Recovery
-TARGET_RECOVERY_INITRC := device/samsung/msm7x27a-common/recovery/init.recovery.rc
-TARGET_RECOVERY_FSTAB := device/samsung/msm7x27a-common/rootdir/fstab.qcom
-ifdef BUILD_RECOVERY
-BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/msm7x27a-common/recovery/graphics.c
-endif
+TARGET_RECOVERY_INITRC := device/samsung/msm7x27a-common/recovery/init.rc
+TARGET_RECOVERY_FSTAB := device/samsung/msm7x27a-common/recovery/recovery.fstab
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/msm7x27a-common/recovery/recovery_keys.c
-TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/msm7x27a-common/recovery/graphics.c
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_HAS_DOWNLOAD_MODE := true
