@@ -95,6 +95,17 @@ BOARD_RIL_CLASS := ../../../device/samsung/msm7x27a-common/ril/
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 24
 
+# Camera
+BOARD_USES_LEGACY_OVERLAY := true
+BOARD_NEEDS_MEMORYHEAPPMEM := true
+BOARD_USES_PMEM_CAMERA := true
+TARGET_DISABLE_ARM_PIE := true
+COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
+COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_LEGACY
+
+## FM Radio
+BOARD_HAVE_QCOM_FM := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED
 ## UMS
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
