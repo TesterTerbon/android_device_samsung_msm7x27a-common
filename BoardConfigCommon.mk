@@ -15,6 +15,8 @@
 # BoardConfig.mk
 #
 
+USE_CAMERA_STUB := true
+
 ## Kernel, bootloader etc.
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
@@ -63,6 +65,10 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 BOARD_EGL_CFG := device/samsung/msm7x27a-common/prebuilt/lib/egl/egl.cfg
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DNEW_ION_API
+
+#camera abi compatiblily
+TARGET_DISPLAY_INSECURE_MM_HEAP := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_BSP_CAMERA_ABI_HACK
 
 ## GPS
 BOARD_USES_QCOM_LIBRPC := true
