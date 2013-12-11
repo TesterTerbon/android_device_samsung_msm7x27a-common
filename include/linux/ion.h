@@ -52,6 +52,17 @@ enum ion_heap_type {
 #define ION_HEAP_CARVEOUT_MASK		(1 << ION_HEAP_TYPE_CARVEOUT)
 #define ION_HEAP_CP_MASK		(1 << ION_HEAP_TYPE_CP)
 
+/**
+ * heap flags - the lower 16 bits are used by core ion, the upper 16
+ * bits are reserved for use by the heaps themselves.
+ */
+#define ION_FLAG_CACHED 1               /* mappings of this buffer should be
+                                           cached, ion will do cache
+                                           maintenance when the buffer is
+                                           mapped for dma */
+#define ION_FLAG_CACHED_NEEDS_SYNC 2    /* mappings of this buffer will created
+                                           at mmap time, if this is set
+                                           caches must be managed manually */
 
 /**
  * These are the only ids that should be used for Ion heap ids.
