@@ -57,7 +57,6 @@ PRODUCT_PACKAGES += \
 
 ## Other HALs
 PRODUCT_PACKAGES += \
-    camera.msm7x27a \
     lights.msm7x27a \
     gps.msm7x27a \
     power.msm7x27a
