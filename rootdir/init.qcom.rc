@@ -92,6 +92,14 @@ on boot
     ## TelephonyManager.java requires this
     chmod 0644 /proc/cmdline
 
+    start qcamerasvr
+
+#start camera server as daemon
+service qcamerasvr /system/bin/mm-qcamera-daemon
+    class late_start
+    user camera
+    group camera system inet input audio
+
 on post-fs-data
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
