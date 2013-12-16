@@ -23,9 +23,14 @@ PRODUCT_PACKAGES += \
 ## Graphics
 PRODUCT_PACKAGES += \
     libgenlock \
+    libmemalloc \
     liboverlay \
+    libqdutils \
     copybit.msm7x27a \
     gralloc.msm7x27a \
+    hwcomposer.msm7x27a \
+    libtilerenderer \
+    libI420colorconvert \
     libqdMetaData
 
 PRODUCT_PROPERTY_OVERRIDES += \
