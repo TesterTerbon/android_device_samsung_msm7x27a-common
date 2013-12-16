@@ -23,19 +23,15 @@ PRODUCT_PACKAGES += \
 ## Graphics
 PRODUCT_PACKAGES += \
     libgenlock \
-    libmemalloc \
     liboverlay \
-    libqdutils \
     copybit.msm7x27a \
     gralloc.msm7x27a \
-    hwcomposer.msm7x27a \
-    libtilerenderer \
-    libI420colorconvert
+    libqdMetaData
 
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=1 \
     debug.egl.hw=1 \
-    debug.composition.type=dyn \
+    debug.composition.type=mdp \
     persist.hwc.mdpcomp.enable=true \
     debug.mdpcomp.logs=0 \
     ro.telephony.call_ring.multiple=0
