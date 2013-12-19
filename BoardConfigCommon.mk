@@ -50,6 +50,7 @@ TARGET_FORCE_CPU_UPLOAD := true
 
 ## ION
 TARGET_USES_ION := true
+BOARD_HAVE_OLD_ION_API := true
 
 ## Graphics, audio, video
 USE_OPENGL_RENDERER := true
