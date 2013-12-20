@@ -45,25 +45,33 @@ TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 ## ION
 TARGET_USES_ION := true
 
-## Graphics, audio, video
-USE_OPENGL_RENDERER := true
+## Qualcomm hardware
 TARGET_QCOM_DISPLAY_VARIANT := legacy
 TARGET_QCOM_MEDIA_VARIANT := legacy
 TARGET_QCOM_AUDIO_VARIANT := legacy
-TARGET_USES_QCOM_BSP := true
 BOARD_USES_QCOM_HARDWARE := true
-BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
-BOARD_EGL_WORKAROUND_BUG_10194508 := true
 BOARD_USE_MHEAP_SCREENSHOT := true
-TARGET_USES_OPENGLES_FOR_SCREEN_CAPTURE := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DNO_TUNNEL_RECORDING
+
+## EGL, graphics
+USE_OPENGL_RENDERER := true
+TARGET_DOESNT_USE_FENCE_SYNC := true
+BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
 BOARD_EGL_CFG := device/samsung/msm7x27a-common/prebuilt/lib/egl/egl.cfg
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
+
+## Qualcomm BSP
+TARGET_USES_QCOM_BSP := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
 
 ## GPS
 BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := msm7x27a
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
+
+## Webkit
+PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
+TARGET_FORCE_CPU_UPLOAD := true
 
 ## Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -76,19 +84,15 @@ BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_ath6kl
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_ath6kl
-WIFI_EXT_MODULE_NAME := cfg80211
-WIFI_EXT_MODULE_PATH := /system/lib/modules/cfg80211.ko
-WIFI_AP_DRIVER_MODULE_NAME := ath6kl_sdio
-WIFI_AP_DRIVER_MODULE_PATH := /system/lib/modules/ath6kl_sdio.ko
-WIFI_AP_DRIVER_MODULE_ARG := "suspend_mode=3 wow_mode=2 ath6kl_p2p=1 recovery_enable=1"
-WIFI_DRIVER_MODULE_NAME := ath6kl_sdio
-WIFI_DRIVER_MODULE_PATH := /system/lib/modules/ath6kl_sdio.ko
+WIFI_EXT_MODULE_NAME := "cfg80211"
+WIFI_EXT_MODULE_PATH := "/system/lib/modules/cfg80211.ko"
+WIFI_DRIVER_MODULE_AP_ARG := "suspend_mode=3 wow_mode=2 ath6kl_p2p=1 recovery_enable=1"
+WIFI_DRIVER_MODULE_NAME := "ath6kl_sdio"
+WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/ath6kl_sdio.ko"
 WIFI_DRIVER_MODULE_ARG := "suspend_mode=3 wow_mode=2 ath6kl_p2p=1 recovery_enable=1"
 
 ## RIL
 BOARD_USES_LEGACY_RIL := true
-BOARD_USES_LIBSECRIL_STUB := true
-BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
 BOARD_RIL_CLASS := ../../../device/samsung/msm7x27a-common/ril/
 
 ## Vold
@@ -109,9 +113,6 @@ TARGET_NO_INITLOGO := true
 BOARD_LPM_BOOT_ARGUMENT_NAME := androidboot.boot_pause
 BOARD_LPM_BOOT_ARGUMENT_VALUE := batt
 BOARD_CHARGER_RES := device/samsung/msm7x27a-common/res/charger
-
-## Bootanimation
-TARGET_BOOTANIMATION_USE_RGB565 := true
 
 ## Use device specific modules
 TARGET_PROVIDES_LIBLIGHTS := true
