@@ -4,9 +4,6 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
 
 on init
-    # Set permissions for persist partition
-    mkdir /persist 0771 system system
-
     ## Setup storage
     mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
@@ -29,18 +26,6 @@ on init
 on fs
     ## Mount partitions
     mount_all /fstab.qcom
-
-    # Keeping following partitions outside fstab file. As user may not have
-    # these partition flashed on the device. Failure to mount any partition in fstab file
-    # results in failure to launch late-start class.
-
-    wait /dev/block/platform/msm_sdcc.3/by-num/p22
-    check_fs /dev/block/platform/msm_sdcc.3/by-num/p22 ext4
-    mount ext4 /dev/block/platform/msm_sdcc.3/by-num/p22 /cache nosuid nodev barrier=1
-
-    wait /dev/block/platform/msm_sdcc.3/by-num/p12
-    check_fs /dev/block/platform/msm_sdcc.3/by-num/p12 ext4
-    mount ext4 /dev/block/platform/msm_sdcc.3/by-num/p12 /persist nosuid nodev barrier=1
 
 on boot
     setenforce 0
