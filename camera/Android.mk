@@ -25,6 +25,6 @@ else
 LOCAL_C_INCLUDES       += hardware/qcom/display-legacy/libgralloc
 endif
 
-LOCAL_PRELINK_MODULE   := false
+LOCAL_LDFLAGS          += -Lvendor/samsung/msm7x27a-common/proprietary/lib -lcamera
 
 include $(BUILD_SHARED_LIBRARY)
