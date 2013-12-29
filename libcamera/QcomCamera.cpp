@@ -343,12 +343,10 @@ void internal_fixup_settings(CameraParameters &settings)
       "1280x720,800x480,768x432,720x480,640x480,576x432,480x320,384x288,352x288,320x240,240x160,176x144";
    const char *video_sizes =
       "1280x720,800x480,720x480,640x480,352x288,320x240,176x144";
-   const char *preferred_size       = "320x240";
+   const char *preferred_size       = "640x480";
    const char *preview_frame_rates  = "30,27,24,15";
    const char *preferred_frame_rate = "15";
    const char *frame_rate_range     = "(15,30)";
-   const char *preferred_horizontal_viewing_angle = "51.2";
-   const char *preferred_vertical_viewing_angle = "39.4";
 
    settings.set(CameraParameters::KEY_VIDEO_FRAME_FORMAT,
                 CameraParameters::PIXEL_FORMAT_YUV420SP);
@@ -385,40 +383,6 @@ void internal_fixup_settings(CameraParameters &settings)
    if (!settings.get(CameraParameters::KEY_SUPPORTED_PREVIEW_FPS_RANGE)) {
       settings.set(CameraParameters::KEY_SUPPORTED_PREVIEW_FPS_RANGE,
                    frame_rate_range);
-   }
-
-   if (!settings.get(android::CameraParameters::KEY_HORIZONTAL_VIEW_ANGLE)) {
-      settings.set(android::CameraParameters::KEY_HORIZONTAL_VIEW_ANGLE,
-                   preferred_horizontal_viewing_angle);
-   }
-
-   if (!settings.get(android::CameraParameters::KEY_VERTICAL_VIEW_ANGLE)) {
-      settings.set(android::CameraParameters::KEY_VERTICAL_VIEW_ANGLE,
-                   preferred_vertical_viewing_angle);
-   }
-
-   if (settings.get(android::CameraParameters::KEY_MAX_CONTRAST)) {
-      settings.set("max-contrast",
-                  settings.get(android::CameraParameters::KEY_MAX_CONTRAST));
-   } else {
-      settings.set("max-contrast",
-                  -1);
-   }
-
-   if (settings.get(android::CameraParameters::KEY_MAX_SATURATION)) {
-      settings.set("max-saturation",
-                  settings.get(android::CameraParameters::KEY_MAX_SATURATION));
-   } else {
-      settings.set("max-saturation",
-                  -1);
-   }
-
-   if (settings.get(android::CameraParameters::KEY_MAX_SHARPNESS)) {
-      settings.set("max-sharpness",
-                  settings.get(android::CameraParameters::KEY_MAX_SHARPNESS));
-   } else {
-      settings.set("max-sharpness",
-                  -1);
    }
 }
 
@@ -527,10 +491,6 @@ extern "C" int get_camera_info(int camera_id, struct camera_info *info)
    return NO_ERROR;
 }
 
-void sighandle(int s){
-  //abort();
-}
-
 extern "C" int camera_device_open(const hw_module_t* module, const char* id,
                    hw_device_t** hw_device)
 {
@@ -541,7 +501,6 @@ extern "C" int camera_device_open(const hw_module_t* module, const char* id,
 
     if(module && id && hw_device) {
         int cameraId = atoi(id);
-        signal(SIGFPE,(*sighandle)); //@nAa: Bad boy doing hacks
         void * libcameraHandle = ::dlopen("libcamera.so", RTLD_NOW);
 
         if (libcameraHandle) {
