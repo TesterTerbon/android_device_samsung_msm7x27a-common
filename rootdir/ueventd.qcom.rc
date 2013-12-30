@@ -52,7 +52,9 @@
 /dev/block/mmcblk0p18     0660   system     system
 /dev/block/mmcblk0p20     0660   system     system
 /dev/video*               0660   system     camera
-/dev/msm_camera/*         0660   system     camera
+/dev/media*               0660   system     camera
+/dev/v4l-subdev*          0660   system     camera
+/dev/msm_camera/*         0777   system     camera
 /dev/gemini0              0660   system     camera
 /dev/tun                  0660   system     vpn
 
