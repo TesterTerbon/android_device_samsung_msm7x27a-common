@@ -124,7 +124,7 @@ BOARD_LPM_BOOT_ARGUMENT_VALUE := batt
 BOARD_CHARGER_RES := device/samsung/msm7x27a-common/res/charger
 
 ## Use device specific modules
-TARGET_PROVIDES_LIBLIGHTS := true
+TARGET_PROVIDES_LIBLIGHT := true
 TARGET_PROVIDES_LIBAUDIO := true
 
 ## Recovery
