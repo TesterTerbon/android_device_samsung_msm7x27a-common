@@ -28,6 +28,8 @@ on fs
     mount_all /fstab.qcom
 
 on boot
+    setenforce 0
+
     ## Setup Bluetooth
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
@@ -90,6 +92,12 @@ on boot
 	
     ## TelephonyManager.java requires this
     chmod 0644 /proc/cmdline
+
+#start camera server as daemon
+service qcamerasvr /system/bin/mm-qcamera-daemon
+        class late_start
+        user camera
+        group camera system inet input audio
 
 on post-fs-data
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
