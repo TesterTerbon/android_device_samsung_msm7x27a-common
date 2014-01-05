@@ -61,11 +61,6 @@ PRODUCT_PACKAGES += \
     audio_policy.conf \
     libaudioutils
 
-## Other HALs
-PRODUCT_PACKAGES += \
-    lights.msm7x27a \
-    gps.msm7x27a \
-    power.msm7x27a
 
 ## FM radio
 PRODUCT_PACKAGES += \
