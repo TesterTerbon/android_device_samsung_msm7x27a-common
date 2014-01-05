@@ -22,6 +22,7 @@ PRODUCT_PACKAGES += \
 
 
 # HALs
+PRODUCT_PACKAGES += \
     libgenlock \
     gralloc.msm7x27a \
     copybit.msm7x27a \
