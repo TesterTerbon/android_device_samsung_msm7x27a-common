@@ -20,22 +20,13 @@ PRODUCT_PACKAGES += \
     libmm-omxcore \
     libOmxCore
 
-## Graphics
-PRODUCT_PACKAGES += \
-    libgenlock \
-    libmemalloc \
-    libqdutils \
-    libtilerenderer \
-    libI420colorconvert
 
 # HALs
-PRODUCT_PACKAGES += \
-    copybit.msm7x27a \
+    libgenlock \
     gralloc.msm7x27a \
-    hwcomposer.msm7x27a \
-    lights.msm7x27a \
-    gps.msm7x27a \
-    power.msm7x27a
+    copybit.msm7x27a \
+    libqdMetaData \
+    memtrack.msm7x27a
 
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=1 \
