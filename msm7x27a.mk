@@ -27,7 +27,9 @@ PRODUCT_PACKAGES += \
     gralloc.msm7x27a \
     copybit.msm7x27a \
     libqdMetaData \
-    memtrack.msm7x27a
+    memtrack.msm7x27a \
+    hwcomposer.msm7x27a \
+    libtilerenderer
 
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=1 \
