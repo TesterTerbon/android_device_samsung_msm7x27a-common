@@ -24,7 +24,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libgenlock \
     libmemalloc \
-    liboverlay \
     libqdutils \
     copybit.msm7x27a \
     gralloc.msm7x27a \
