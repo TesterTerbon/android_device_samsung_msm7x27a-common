@@ -4,6 +4,8 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
 
 on init
+    write /proc/sys/kernel/randomize_va_space 1
+
     ## Setup storage
     mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
@@ -26,6 +28,11 @@ on init
 on fs
     ## Mount partitions
     mount_all /fstab.qcom
+
+    ## Kernel Samepage Merging (KSM)
+    write /sys/kernel/mm/ksm/sleep_millisecs 4000
+    write /sys/kernel/mm/ksm/pages_to_scan 256
+    write /sys/kernel/mm/ksm/run 1
 
 on boot
     setenforce 0
