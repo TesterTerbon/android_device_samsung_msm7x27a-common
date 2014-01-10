@@ -38,6 +38,9 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 
+## Allow compatibility with older recoveries
+SKIP_SET_METADATA := true
+
 ## FM Radio
 BOARD_HAVE_QCOM_FM := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED
@@ -58,11 +61,12 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 ## Video
 TARGET_QCOM_MEDIA_VARIANT := legacy
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_LEGACY_MMPARSER
 
 ## Audio
-TARGET_QCOM_AUDIO_VARIANT := legacy
+TARGET_QCOM_AUDIO_VARIANT := caf
 BOARD_USES_LEGACY_ALSA_AUDIO := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_DIRECTTRACK -DNO_TUNNELED_SOURCE
+COMMON_GLOBAL_CFLAGS += -DNO_TUNNELED_SOURCE
 
 ## EGL, graphics
 USE_OPENGL_RENDERER := true
@@ -87,7 +91,6 @@ TARGET_FORCE_CPU_UPLOAD := true
 
 ## Bluetooth
 BOARD_HAVE_BLUETOOTH := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/msm7x27a-common/bluetooth
 
 ## Wi-Fi
 BOARD_WLAN_DEVICE := ath6kl
@@ -117,6 +120,11 @@ BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
 
 ## Samsung has weird framebuffer
 TARGET_NO_INITLOGO := true
+
+## Bootanimation
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+TARGET_BOOTANIMATION_USE_RGB565 := true
 
 ## Charging mode
 BOARD_LPM_BOOT_ARGUMENT_NAME := androidboot.boot_pause
