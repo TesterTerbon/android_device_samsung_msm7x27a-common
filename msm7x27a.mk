@@ -86,6 +86,7 @@ PRODUCT_COPY_FILES += \
     device/samsung/msm7x27a-common/rootdir/init.qcom.usb.rc:root/init.qcom.usb.rc \
     device/samsung/msm7x27a-common/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
     device/samsung/msm7x27a-common/rootdir/lpm.rc:root/lpm.rc \
+    device/samsung/msm7x27a-common/rootdir/default.prop:root/default.prop \
     device/samsung/msm7x27a-common/rootdir/fstab.qcom:root/fstab.qcom
 
 ## Recovery
