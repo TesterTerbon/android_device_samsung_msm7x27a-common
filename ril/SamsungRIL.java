@@ -271,7 +271,6 @@ public class SamsungRIL extends RIL implements CommandsInterface {
                     return rr;
                 }
             } else {
-                rr.onError(error, ret);
                 return rr;
             }
         }
