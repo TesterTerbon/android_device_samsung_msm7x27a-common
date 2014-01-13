@@ -77,6 +77,7 @@ TARGET_QCOM_DISPLAY_VARIANT := legacy
 TARGET_DOESNT_USE_FENCE_SYNC := true
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
 BOARD_EGL_CFG := device/samsung/msm7x27a-common/prebuilt/lib/egl/egl.cfg
+BOARD_EGL_NEEDS_LEGACY_FB := true
 
 ## Qualcomm BSP
 TARGET_USES_QCOM_BSP := true
